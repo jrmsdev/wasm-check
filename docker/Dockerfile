@@ -11,7 +11,7 @@ ENV HOME /root
 
 ENV DEBIAN_FRONTEND noninteractive
 
-ENV APT_INSTALL bash openssl ca-certificates rustup
+ENV APT_INSTALL bash openssl ca-certificates build-essential rustup
 
 RUN apt-get clean \
 	&& apt-get update -yy \
@@ -42,6 +42,8 @@ WORKDIR /home/devel
 ENV USER devel
 ENV HOME /home/devel
 
+# https://chatgpt.com/c/3d0f08c7-b992-492f-a886-4cd68eb65b7a
+
 ENV RUST_VERSION 1.80
 
 RUN rustup --version && \
@@ -49,6 +51,8 @@ RUN rustup --version && \
 
 RUN rustc --version && \
 	cargo --version
+
+RUN rustup target add wasm32-unknown-unknown
 
 RUN cargo install wasm-pack
 
