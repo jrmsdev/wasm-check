@@ -1,2 +1,3 @@
 # wasm-check
-Check WebAssembly browser support
+
+Check WebAssembly browser support.

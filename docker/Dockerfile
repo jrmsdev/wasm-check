@@ -44,7 +44,8 @@ ENV HOME /home/devel
 
 # https://chatgpt.com/c/3d0f08c7-b992-492f-a886-4cd68eb65b7a
 
-ENV RUST_VERSION 1.80
+ARG RUST_VERSION=1.80
+ENV RUST_VERSION ${RUST_VERSION}
 
 RUN rustup --version && \
 	rustup default ${RUST_VERSION}
