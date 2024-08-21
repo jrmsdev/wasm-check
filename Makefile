@@ -1,4 +1,4 @@
-RUST_VERSION := 1.80
+RUST_VERSION := 1.80.1
 
 .PHONY: default
 default: build
