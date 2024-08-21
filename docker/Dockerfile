@@ -44,8 +44,9 @@ ENV HOME /home/devel
 
 # https://chatgpt.com/c/3d0f08c7-b992-492f-a886-4cd68eb65b7a
 
-ARG RUST_VERSION=1.80
-ENV RUST_VERSION ${RUST_VERSION}
+ENV RUST_VERSION 1.80.1
+
+RUN mkdir -vp -m 0750 ${HOME}/bin
 
 RUN rustup --version && \
 	rustup default ${RUST_VERSION}
@@ -56,5 +57,7 @@ RUN rustc --version && \
 RUN rustup target add wasm32-unknown-unknown
 
 RUN cargo install wasm-pack
+
+RUN printf 'export PATH=%s\n' '/usr/local/bin:/usr/bin:/home/devel/.cargo/bin' >>/home/devel/.profile
 
 CMD /bin/bash -i -l
