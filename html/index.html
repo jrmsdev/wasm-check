@@ -4,13 +4,13 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Check WASM support</title>
-	<link rel="stylesheet" href="/static/default.css">
+	<link rel="stylesheet" href="./static/default.css">
 </head>
 <body>
 	<pre id="wc_init"><span style="color:#ff0000">ERROR</span></pre>
 
 	<script type="module">
-		import init, { wc_init } from '/pkg/wasm_check.js';
+		import init, { wc_init } from './pkg/wasm_check.js';
 
 		async function run() {
 			await init();

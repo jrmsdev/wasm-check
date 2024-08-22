@@ -3,7 +3,7 @@ default: build
 
 .PHONY: clean
 clean:
-	@rm -vrf Cargo.lock pkg
+	@rm -vrf Cargo.lock pkg publish
 
 .PHONY: distclean
 distclean: clean
@@ -25,3 +25,13 @@ build-deps:
 .PHONY: build
 build:
 	@wasm-pack build --target web
+
+.PHONY: publish
+publish:
+	@rm -rf ./publish
+	@install -v -m 0755 -d ./publish
+	@install -v -m 0644 ./html/index.html ./publish
+	@install -v -m 0755 -d ./publish/static
+	@install -v -m 0644 ./static/default.css ./publish/static
+	@install -v -m 0755 -d ./publish/pkg
+	@install -v -m 0644 -t ./publish/pkg ./pkg/wasm_check*
