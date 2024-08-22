@@ -15,8 +15,13 @@ docker:
 
 .PHONY: fmt
 fmt:
-	@rustfmt -v -l ./src/*.rs
+	@rustfmt -l ./src/*.rs
+
+.PHONY: build-deps
+build-deps:
+	rustup target add wasm32-unknown-unknown
+	cargo install wasm-pack
 
 .PHONY: build
 build:
-	@/home/devel/.cargo/bin/wasm-pack build --target web
+	@wasm-pack build --target web

@@ -23,25 +23,31 @@ env:
 
 jobs:
   deploy:
+
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+
     runs-on: ubuntu-latest
+
     steps:
       - name: checkout
         uses: actions/checkout@v4
-      - name: wasm target
-        run: rustup target add wasm32-unknown-unknown
-      - name: wasm-pack
-        run: cargo install wasm-pack
+
+      - name: build-deps
+        run: make build-deps
+
       - name: build
-        run: wasm-pack build --target web
+        run: make
+
       - name: setup pages
         uses: actions/configure-pages@v5
+
       - name: upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: './pkg'
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
