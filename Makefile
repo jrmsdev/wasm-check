@@ -30,7 +30,7 @@ build:
 publish:
 	@rm -rf ./publish
 	@install -v -m 0755 -d ./publish
-	@install -v -m 0644 ./html/index.html ./publish
+	@install -v -m 0644 ./index.html ./publish
 	@install -v -m 0755 -d ./publish/static
 	@install -v -m 0644 ./static/default.css ./publish/static
 	@install -v -m 0755 -d ./publish/pkg
