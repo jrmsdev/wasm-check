@@ -1,9 +1,13 @@
 .PHONY: default
 default: build
 
+.PHONY: clean
+clean:
+	@rm -vrf Cargo.lock pkg
+
 .PHONY: distclean
-distclean:
-	@rm -rf Cargo.lock pkg target
+distclean: clean
+	@rm -vrf target
 
 .PHONY: docker
 docker:
