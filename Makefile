@@ -9,6 +9,10 @@ distclean:
 docker:
 	@./docker/build.sh
 
+.PHONY: fmt
+fmt:
+	@rustfmt -v -l ./src/*.rs
+
 .PHONY: build
 build:
 	@/home/devel/.cargo/bin/wasm-pack build --target web
