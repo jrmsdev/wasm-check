@@ -1,9 +1,9 @@
 use wasm_bindgen::prelude::*;
 
-use web_sys::console;
+use web_sys::console::log_1;
 
 #[wasm_bindgen]
 pub fn wc_init() -> String {
-    console::log_1(&"wc_init".into());
-    "WASM application loaded".to_string()
+    log_1(&"wc_init".into());
+    "OK".to_string()
 }
