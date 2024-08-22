@@ -1,7 +1,6 @@
 use wasm_bindgen::prelude::*;
 
-// Expose the `greet` function to JavaScript
 #[wasm_bindgen]
-pub fn greet(name: &str) -> String {
-    format!("Hello {}!", name)
+pub fn wc_init() -> String {
+    "WASM application loaded".to_string()
 }

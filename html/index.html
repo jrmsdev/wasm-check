@@ -3,20 +3,24 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Hello WASM</title>
+	<title>Check WASM support</title>
 	<link rel="stylesheet" href="/static/default.css">
 </head>
 <body>
-	<h1 id="greeting"></h1>
+	<pre id="wc_init"><span style="color:#ff0000">NO WASM</span></pre>
+
 	<script type="module">
-		import init, { greet } from '/pkg/wasm_check.js';
+		import init, { wc_init } from '/pkg/wasm_check.js';
 
 		async function run() {
 			await init();
-			document.getElementById('greeting').textContent = greet('World');
+
+			document.getElementById('wc_init').textContent = wc_init();
+
 		}
 
 		run();
 	</script>
+
 </body>
 </html>
