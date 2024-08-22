@@ -19,12 +19,15 @@ fmt:
 
 .PHONY: build-deps
 build-deps:
-	rustup target add wasm32-unknown-unknown
-	cargo install wasm-pack
+	@./docker/build-deps.sh
 
 .PHONY: build
 build:
 	@wasm-pack build --target web
+
+.PHONY: test
+test:
+	@wasm-pack test --node --lib
 
 .PHONY: publish
 publish:

@@ -6,6 +6,9 @@ description = "Check WebAssembly browser support"
 repository = "https://github.com/jrmsdev/wasm-check"
 license = "bsd"
 
+[dev-dependencies]
+wasm-bindgen-test = "0.3.43"
+
 [dependencies]
 wasm-bindgen = "0.2"
 

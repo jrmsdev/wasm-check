@@ -11,7 +11,7 @@ ENV HOME /root
 
 ENV DEBIAN_FRONTEND noninteractive
 
-ENV APT_INSTALL bash openssl ca-certificates build-essential rustup
+ENV APT_INSTALL bash openssl ca-certificates build-essential rustup nodejs
 
 RUN apt-get clean \
 	&& apt-get update -yy \
@@ -36,6 +36,9 @@ RUN groupadd -o -g ${DEVEL_GID} devel \
 RUN printf 'umask %s\n' '027' >>/home/devel/.profile
 RUN printf "export PS1='%s '\n" '\u@\h:\W\$' >>/home/devel/.profile
 
+ADD ./build-deps.sh /var/tmp/build-deps.sh
+RUN chmod -v 555 /var/tmp/build-deps.sh
+
 USER devel:devel
 WORKDIR /home/devel
 
@@ -54,10 +57,10 @@ RUN rustup --version && \
 RUN rustc --version && \
 	cargo --version
 
-RUN rustup target add wasm32-unknown-unknown
-
-RUN cargo install wasm-pack
+RUN /var/tmp/build-deps.sh
 
 RUN printf 'export PATH=%s\n' '/usr/local/bin:/usr/bin:/home/devel/.cargo/bin' >>/home/devel/.profile
+
+ENV RUST_BACKTRACE=1
 
 CMD /bin/bash -i -l

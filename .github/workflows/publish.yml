@@ -40,6 +40,9 @@ jobs:
       - name: build
         run: make
 
+      - name: test
+        run: make test
+
       - name: publish
         run: make publish
 
