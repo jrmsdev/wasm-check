@@ -1,6 +1,12 @@
 .PHONY: default
 default: build
 
+.PHONY: all
+all:
+	@$(MAKE) build
+	@$(MAKE) test
+	@$(MAKE) publish
+
 .PHONY: clean
 clean:
 	@rm -vrf Cargo.lock pkg publish
