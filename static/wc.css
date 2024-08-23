@@ -1,0 +1,12 @@
+body {
+	font-size: 18px;
+}
+
+table {
+	border-spacing: 1em;
+	text-align: left;
+}
+
+.main {
+	display: block;
+}
