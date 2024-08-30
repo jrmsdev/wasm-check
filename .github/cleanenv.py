@@ -8,7 +8,7 @@ from subprocess import run, CalledProcessError
 if __name__ == '__main__':
 	cmd = sys.argv[1:]
 	if not cmd:
-		print('cleanenv: no command', file = sys.stderr)
+		print('cleanenv: no command', file = sys.stderr, flush = True)
 		sys.exit(1)
 	env = {}
 	for k, v in os.environ.items():
@@ -40,11 +40,33 @@ if __name__ == '__main__':
 			continue
 		elif k.startswith('SELENIUM_'):
 			continue
+		elif k.startswith('ACTIONS_'):
+			continue
+		elif k.startswith('PIPX_'):
+			continue
+		elif k.startswith('LEIN_'):
+			continue
+		elif k.startswith('CHROME'):
+			continue
+		elif k.startswith('GECKO'):
+			continue
+		elif k.startswith('SYSTEMD_'):
+			continue
+		elif k.startswith('SWIFT_'):
+			continue
+		elif k.startswith('VCPKG_'):
+			continue
+		elif k.startswith('JOURNAL_'):
+			continue
+		elif k.startswith('HOMEBREW_'):
+			continue
+		elif k.startswith('AZURE_'):
+			continue
 		env[k] = v
-	print('cleanenv:', ' '.join(cmd))
+	print('cleanenv:', ' '.join(cmd), flush = True)
 	try:
 		run(cmd, env = env, check = True)
 	except CalledProcessError as err:
-		print(err)
+		print(err, file = sys.stderr, flush = True)
 		sys.exit(err.returncode)
 	sys.exit(0)
