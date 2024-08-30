@@ -3,6 +3,7 @@ default: build
 
 .PHONY: all
 all:
+	@go version
 	@$(MAKE) build
 	@$(MAKE) test
 	@$(MAKE) publish
