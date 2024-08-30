@@ -27,7 +27,7 @@ build:
 
 .PHONY: test
 test:
-	@gotest
+	@go test -exec="`go env GOROOT`/misc/wasm/go_js_wasm_exec"
 
 .PHONY: publish
 publish:
