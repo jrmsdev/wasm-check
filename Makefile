@@ -4,6 +4,8 @@ default: build
 .PHONY: all
 all:
 	@go version
+	@echo "GOOS=`go env GOOS`"
+	@echo "GOARCH=`go env GOARCH`"
 	@$(MAKE) build
 	@$(MAKE) test
 	@$(MAKE) publish
