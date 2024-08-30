@@ -38,7 +38,6 @@ jobs:
           check-latest: true
           go-version-file: './go.mod'
           #~ cache-dependency-path: './go.sum'
-        run: go version
 
       - name: all
         run: make all
