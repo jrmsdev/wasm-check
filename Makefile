@@ -3,6 +3,7 @@ default: build
 
 .PHONY: all
 all:
+	@env
 	@echo "GOOS=`go env GOOS` GOARCH=`go env GOARCH`"
 	@echo "  `go version`"
 	@echo "  nodejs `node --version`"
