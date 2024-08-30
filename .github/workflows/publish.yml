@@ -34,17 +34,8 @@ jobs:
       - name: checkout
         uses: actions/checkout@v4
 
-      - name: build-deps
-        run: make build-deps
-
-      - name: build
-        run: make
-
-      - name: test
-        run: make test
-
-      - name: publish
-        run: make publish
+      - name: all
+        run: make all
 
       - name: setup pages
         uses: actions/configure-pages@v5
