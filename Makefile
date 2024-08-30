@@ -9,7 +9,7 @@ all:
 
 .PHONY: clean
 clean:
-	@rm -vrf publish
+	@rm -vrf pkg publish
 
 .PHONY: distclean
 distclean: clean
@@ -18,13 +18,12 @@ distclean: clean
 docker:
 	@./docker/build.sh
 
-.PHONY: fmt
-fmt:
-	@gofmt
-
 .PHONY: build
 build:
-	@gobuild
+	@rm -rf ./pkg
+	@install -m 0750 -d ./pkg
+	@install -v -m 0640 -t ./pkg "`go env GOROOT`/misc/wasm/wasm_exec.js"
+	@go build -o ./pkg/main.wasm
 
 .PHONY: test
 test:
