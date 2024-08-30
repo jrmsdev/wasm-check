@@ -3,8 +3,21 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"syscall/js"
+)
 
 func main() {
-	fmt.Println("wasm-check main")
+
+	wc_init := js.FuncOf(func(this js.Value, args []js.Value) interface{} {
+		return "OK"
+	})
+	defer wc_init.Release()
+	js.Global().Set("wc_init", wc_init)
+
+	fmt.Println("wasm-check loaded")
+
+	// infinite loop
+	select {}
 }

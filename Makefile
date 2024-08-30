@@ -35,4 +35,6 @@ publish:
 	@install -v -m 0755 -d ./publish
 	@install -v -m 0644 ./index.html ./publish
 	@install -v -m 0755 -d ./publish/static
-	@install -v -m 0644 -t ./publish/static ./static/*.*
+	@install -v -m 0644 -t ./publish/static ./static/*.css ./static/*.js
+	@install -v -m 0755 -d ./publish/pkg
+	@install -v -m 0644 -t ./publish/pkg ./pkg/wasm_exec.js ./pkg/main.wasm
